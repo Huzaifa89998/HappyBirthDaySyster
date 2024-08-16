@@ -4,24 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Sister</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="sky">
-        <!-- Rocket Containers -->
-        <div class="rocket-container">
-            <div class="rocket" id="rocket1"></div>
-            <div class="explosion" id="explosion1"></div>
-        </div>
-        <div class="rocket-container">
-            <div class="rocket" id="rocket2"></div>
-            <div class="explosion" id="explosion2"></div>
-        </div>
-        <div class="rocket-container">
-            <div class="rocket" id="rocket3"></div>
-            <div class="explosion" id="explosion3"></div>
-        </div>
-
         <!-- Birthday Content -->
         <div class="wrapper">
             <div class="content">
@@ -35,38 +20,6 @@
     </div>
 
     <script>
-        // Function to trigger the rocket animation, explosion, and background light-up
-        function launchRocket(rocketId, explosionId, delay) {
-            setTimeout(() => {
-                const rocket = document.getElementById(rocketId);
-                const explosion = document.getElementById(explosionId);
-                const sky = document.querySelector('.sky');
-
-                // Launch the rocket
-                rocket.style.animation = 'launchUp 2s linear forwards';
-
-                // Trigger the explosion and sky lighting when rocket reaches the top
-                setTimeout(() => {
-                    explosion.style.width = '150px';
-                    explosion.style.height = '150px';
-                    explosion.style.opacity = '1';
-                    explosion.style.animation = 'explode 0.5s linear forwards';
-                    sky.style.backgroundColor = '#ff4500';  // Change the background color
-
-                    // Revert background color after a short delay
-                    setTimeout(() => {
-                        sky.style.backgroundColor = '#000';
-                    }, 500);
-                }, 1900);
-
-            }, delay);
-        }
-
-        // Launch rockets with different delays to simulate lighting
-        launchRocket('rocket1', 'explosion1', 0);
-        launchRocket('rocket2', 'explosion2', 2500);
-        launchRocket('rocket3', 'explosion3', 5000);
-
         // Surprise button functionality
         document.getElementById("surprise-btn").addEventListener("click", () => {
             document.getElementById("surprise-message").classList.remove("hidden");
@@ -93,50 +46,41 @@ body, html {
 .sky {
     width: 100%;
     height: 100%;
-    position: relative;
     display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     background: #000;
-    transition: background-color 1s ease;
 }
 
 .wrapper {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
     text-align: center;
     background: rgba(255, 255, 255, 0.9);
-    padding: 60px;
+    padding: 20px;
     border-radius: 20px;
-    z-index: 10;
-    max-width: 90%;
 }
 
 h1 {
     color: #ff6a88;
-    font-size: 6rem; /* Increased font size significantly */
-    margin-bottom: 30px;
+    font-size: 10rem; /* Maximum font size */
+    margin-bottom: 20px;
 }
 
 #sister-name {
     color: #ffc3a0;
-    font-size: 7rem; /* Larger name */
 }
 
 p {
     color: #ff6a88;
-    font-size: 2.5rem; /* Increased font size significantly */
-    margin-bottom: 30px;
+    font-size: 4rem; /* Large font size */
+    margin-bottom: 20px;
 }
 
 button {
-    padding: 30px 60px; /* Larger button */
+    padding: 20px 40px;
     background-color: #ff6a88;
     border: none;
     color: white;
-    font-size: 2rem; /* Larger font size for button */
+    font-size: 3rem; /* Larger button */
     cursor: pointer;
     border-radius: 10px;
 }
@@ -147,79 +91,5 @@ button:hover {
 
 .hidden {
     display: none;
-}
-
-/* Rocket Animation */
-.rocket-container {
-    position: relative;
-}
-
-.rocket {
-    width: 10px;
-    height: 50px;
-    background: linear-gradient(to bottom, red, orange, yellow);
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 50% 50% 0 0;
-    animation: launchUp 2s linear forwards;
-}
-
-.explosion {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 1) 20%, rgba(255, 255, 255, 0) 70%);
-}
-
-@keyframes launchUp {
-    0% {
-        transform: translateX(-50%) translateY(0);
-    }
-    90% {
-        transform: translateX(-50%) translateY(-90vh);
-    }
-    100% {
-        transform: translateX(-50%) translateY(-90vh);
-        opacity: 0;
-    }
-}
-
-@keyframes explode {
-    0% {
-        opacity: 1;
-        transform: scale(0);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(3);
-    }
-}
-
-/* Responsive Design */
-@media screen and (max-width: 600px) {
-    h1 {
-        font-size: 4rem; /* Adjusted for smaller screens */
-    }
-
-    p {
-        font-size: 2rem; /* Adjusted for smaller screens */
-    }
-
-    button {
-        font-size: 1.8rem; /* Adjusted for smaller screens */
-        padding: 20px 40px;
-    }
-
-    .wrapper {
-        padding: 40px;
-        top: 5%;
-    }
 }
 </style>
