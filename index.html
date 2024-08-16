@@ -21,26 +21,14 @@
             <div class="rocket" id="rocket3"></div>
             <div class="explosion" id="explosion3"></div>
         </div>
-        
-        <div class="rocket-container">
-            <div class="rocket" id="rocket1"></div>
-            <div class="explosion" id="explosion1"></div>
-        </div>
-        <div class="rocket-container">
-            <div class="rocket" id="rocket2"></div>
-            <div class="explosion" id="explosion2"></div>
-        </div>
-        <div class="rocket-container">
-            <div class="rocket" id="rocket3"></div>
-            <div class="explosion" id="explosion3"></div>
-        </div>
+
         <!-- Birthday Content -->
         <div class="wrapper">
             <div class="content">
                 <h1>Happy Birthday, <span id="sister-name"><b>Sana</b></span>!</h1>
                 <p id="greeting">Wishing you all the happiness in the world.</p>
                 <button id="surprise-btn">Reveal the Surprise</button>
-                <p id="surprise-message" class="hidden">🎉🎉Thank's For Coming In My Life <br> Allah Hamesha Khus Rakhe, Tamam Jahan Ki Khusya Ata Kare <br> Or <br>
+                <p id="surprise-message" class="hidden">🎉🎉Thank's For Coming In My Life <br> Allah Hamesha Khush Rakhe, Tamam Jahan Ki Khushya Ata Kare <br> Or <br>
                     You're the best sister ever!🎉🎉</p>
             </div>
         </div>
@@ -48,48 +36,47 @@
 
     <script>
         // Function to trigger the rocket animation, explosion, and background light-up
-function launchRocket(rocketId, explosionId, delay) {
-    setTimeout(() => {
-        const rocket = document.getElementById(rocketId);
-        const explosion = document.getElementById(explosionId);
-        const sky = document.querySelector('.sky');
-
-        // Launch the rocket
-        rocket.style.animation = 'launchUp 2s linear forwards';
-
-        // Trigger the explosion and sky lighting when rocket reaches the top
-        setTimeout(() => {
-            explosion.style.width = '150px';
-            explosion.style.height = '150px';
-            explosion.style.opacity = '1';
-            explosion.style.animation = 'explode 0.5s linear forwards';
-            sky.style.backgroundColor = '#ff4500';  // Change the background color
-
-            // Revert background color after a short delay
+        function launchRocket(rocketId, explosionId, delay) {
             setTimeout(() => {
-                sky.style.backgroundColor = '#000';
-            }, 500);
-        }, 1900);
+                const rocket = document.getElementById(rocketId);
+                const explosion = document.getElementById(explosionId);
+                const sky = document.querySelector('.sky');
 
-    }, delay);
-}
+                // Launch the rocket
+                rocket.style.animation = 'launchUp 2s linear forwards';
 
-// Launch rockets with different delays to simulate lighting
-launchRocket('rocket1', 'explosion1', 0);
-launchRocket('rocket2', 'explosion2', 2500);
-launchRocket('rocket3', 'explosion3', 5000);
+                // Trigger the explosion and sky lighting when rocket reaches the top
+                setTimeout(() => {
+                    explosion.style.width = '150px';
+                    explosion.style.height = '150px';
+                    explosion.style.opacity = '1';
+                    explosion.style.animation = 'explode 0.5s linear forwards';
+                    sky.style.backgroundColor = '#ff4500';  // Change the background color
 
-// Surprise button functionality
-document.getElementById("surprise-btn").addEventListener("click", () => {
-    document.getElementById("surprise-message").classList.remove("hidden");
-});
+                    // Revert background color after a short delay
+                    setTimeout(() => {
+                        sky.style.backgroundColor = '#000';
+                    }, 500);
+                }, 1900);
 
+            }, delay);
+        }
+
+        // Launch rockets with different delays to simulate lighting
+        launchRocket('rocket1', 'explosion1', 0);
+        launchRocket('rocket2', 'explosion2', 2500);
+        launchRocket('rocket3', 'explosion3', 5000);
+
+        // Surprise button functionality
+        document.getElementById("surprise-btn").addEventListener("click", () => {
+            document.getElementById("surprise-message").classList.remove("hidden");
+        });
     </script>
 </body>
 </html>
 
 <style>
-    /* General Reset */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -124,11 +111,13 @@ body, html {
     padding: 20px;
     border-radius: 20px;
     z-index: 10;
+    max-width: 90%;
 }
 
 h1, p {
     color: #ff6a88;
     margin-bottom: 20px;
+    font-size: 1.5rem;
 }
 
 #sister-name {
@@ -136,11 +125,11 @@ h1, p {
 }
 
 button {
-    padding: 15px 30px;
+    padding: 10px 20px;
     background-color: #ff6a88;
     border: none;
     color: white;
-    font-size: 1.2em;
+    font-size: 1em;
     cursor: pointer;
     border-radius: 5px;
 }
@@ -206,5 +195,24 @@ button:hover {
     }
 }
 
-</style>
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 1.2rem;
+    }
 
+    p {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 0.9em;
+        padding: 10px 15px;
+    }
+
+    .wrapper {
+        padding: 15px;
+        top: 10%;
+    }
+}
+</style>
